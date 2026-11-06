@@ -1,0 +1,20 @@
+services:
+  backend:
+    build: ./backend
+    env_file: ./backend/.env
+    volumes:
+      - docuchat-data:/data      # keeps your documents, vectors and the embedding model
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # lets the container reach Ollama on your PC
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  docuchat-data:
