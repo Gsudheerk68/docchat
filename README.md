@@ -1,8 +1,4 @@
-# Phase 4 — Streaming, polish and Docker
 
-**Goal:** token-by-token answers, a Stop button, and one-command deployment.
-
-## What changed
 **Backend**
 - `POST /api/chat/stream` — Server-Sent Events: `sources` → `token`… → `done` (or `error`), using `chain.astream()`
 - Embedding model cache stored under `DATA_DIR` so it survives restarts
